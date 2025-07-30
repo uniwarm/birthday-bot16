@@ -50,7 +50,8 @@ async def check_birthdays():
             msg = f"🎉 Сегодня день рождения у {emp['name']}! Поздравляем! 🎂"
             await bot.send_message(int(CHAT_ID), msg)
 
-scheduler.add_job(check_birthdays, "cron", hour=8, minute=30)
+scheduler.add_job(check_birthdays, "interval", minutes=1)
+
 
 @dp.message_handler(commands=["start"])
 async def start_cmd(message: types.Message):
